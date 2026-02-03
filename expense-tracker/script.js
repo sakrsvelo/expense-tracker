@@ -46,15 +46,15 @@ function updateTransactionList(){
 function createTransactionElement(transaction){
     const li = document.createElement("li");
     li.classList.add("transaction"); // applies styling?
-    li.classList.add(transaction.amount < 0 ? "income" : "expense");
+    li.classList.add(transaction.amount < 0 ? "expense" : "income");
 
     // similar to string.format vv
     li.innerHTML = `
-        <span>${(transaction.description)} </span>
+        <span> ${(transaction.description)} </span>
     
         <span>
             ${(formatCurrency(transaction.amount))}
-            <button class-"delete-btn" onclick="removeTransaction(${transaction.id})">
+            <button class= "delete-btn" onclick="removeTransaction(${transaction.id})">
                 <i class="fa-solid fa-trash"></i>
             </button>
         </span>
