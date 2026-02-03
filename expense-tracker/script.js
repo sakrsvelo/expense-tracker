@@ -80,5 +80,18 @@ function removeTransaction(id){
 }
 
 function updateSummary(){
-    
+    const balance = transactions
+    .reduce((acc, transaction) => acc + transaction.amount, 0);
+
+    const income = transactions
+    .filter(transactions => transactions.amount > 0)
+    .reduce((acc, transaction) => acc + transaction.amount, 0);
+
+    const expense = transactions
+    .filter(transactions => transactions.amount < 0)
+    .reduce((acc, transaction) => acc + transaction.amount, 0);
+
+    balanceEl.textContent = formatCurrency(balance);
+    incomeAmtEl.textContent = formatCurrency(income);
+    expenseAmtEl.textContent = formatCurrency(expense);
 }
