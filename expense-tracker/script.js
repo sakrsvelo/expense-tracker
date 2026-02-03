@@ -45,7 +45,7 @@ function updateTransactionList(){
 // transaction.amount
 function createTransactionElement(transaction){
     const li = document.createElement("li");
-    li.classList.add(transaction); // applies styling?
+    li.classList.add("transaction"); // applies styling?
     li.classList.add(transaction.amount < 0 ? "income" : "expense");
 
     // similar to string.format vv
