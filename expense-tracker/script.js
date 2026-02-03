@@ -47,8 +47,38 @@ function createTransactionElement(transaction){
     const li = document.createElement("li");
     li.classList.add(transaction); // applies styling?
     li.classList.add(transaction.amount < 0 ? "income" : "expense");
+
+    // similar to string.format vv
+    li.innerHTML = `
+        <span>${(transaction.description)} </span>
+    
+        <span>
+            ${(formatCurrency(transaction.amount))}
+            <button class-"delete-btn" onclick="removeTransaction(${transaction.id})">
+                <i class="fa-solid fa-trash"></i>
+            </button>
+        </span>
+    `;
+    return li;
+}
+
+function formatCurrency(amount){
+    return new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD"
+    }).format(amount);
+}
+
+// similar to a for each loop
+function removeTransaction(id){
+    transactions = transactions.filter(transaction => transaction.id == id);
+
+    localStorage.setItem("transactions", JSON.stringify(transactions));
+
+    updateTransactionList();
+    updateSummary();
 }
 
 function updateSummary(){
-
+    
 }
