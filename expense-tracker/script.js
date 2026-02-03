@@ -71,7 +71,7 @@ function formatCurrency(amount){
 
 // similar to a for each loop
 function removeTransaction(id){
-    transactions = transactions.filter(transaction => transaction.id == id);
+    transactions = transactions.filter(transaction => transaction.id !== id);
 
     localStorage.setItem("transactions", JSON.stringify(transactions));
 
@@ -95,3 +95,6 @@ function updateSummary(){
     incomeAmtEl.textContent = formatCurrency(income);
     expenseAmtEl.textContent = formatCurrency(expense);
 }
+
+updateTransactionList();
+updateSummary();
